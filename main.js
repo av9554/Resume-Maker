@@ -69,7 +69,7 @@ function generate() {
 
   document.getElementById("profession").innerHTML = document.getElementById("professionfeild").value;
 
-document.getElementById("profession2").innerHTML = document.getElementById("profession").value;
+document.getElementById("profession2").innerHTML = document.getElementById("professionfeild").value;
 
   document.getElementById("contact").innerHTML = document.getElementById("phone").value;
 
@@ -85,13 +85,23 @@ document.getElementById("profession2").innerHTML = document.getElementById("prof
 
   document.getElementById("objectiveT").innerHTML = document.getElementById("objectivefeild").value;
 
-  let aqs = document.getElementsByClassName("eqField");
-  let str = "";
+// Get all elements with the class name "eqField"
+let aqs = document.getElementsByClassName("eqField");
 
-  for (let e of aqs) {
-    str += `<li>${e.value}</li>`;
+// Loop through each element and append its value as a new list item
+for (let e of aqs) {
+  // Trim to avoid empty list items
+  let trimmedValue = e.value.trim();
+  if (trimmedValue !== '') {
+    // Create a new list item element
+    let listItem = document.createElement('li');
+    listItem.textContent = trimmedValue;
+
+    // Append the new list item to the "academicT" ul
+    document.getElementById("academicT").appendChild(listItem);
   }
-  document.getElementById("academicT").innerHTML = str;
+}
+
 
   let wes = document.getElementsByClassName("weField");
   let str1 = "";
